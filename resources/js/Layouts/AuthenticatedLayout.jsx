@@ -26,7 +26,7 @@ export default function Authenticated({ user, header, children }) {
                                 </NavLink>
 
                                 <NavLink href={route('chirps.index')} active={route().current('chirps.index')}>
-                                    Chirps
+                                    Chat
                                 </NavLink>
                             </div>
                         </div>
