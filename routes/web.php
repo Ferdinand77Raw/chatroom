@@ -5,6 +5,8 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\ChirpController;
+use App\Http\Controllers\AuthenticatedSessionController;
+use App\Http\Controllers\RegisteredUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +18,7 @@ use App\Http\Controllers\ChirpController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/*
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
@@ -25,6 +27,10 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
+*/
+
+Route::get('/', 'App\Http\Controllers\Auth\AuthenticatedSessionController@create')->name('login');
+Route::get('/register', 'Auth\RegisteredUserController@create')->name('register');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

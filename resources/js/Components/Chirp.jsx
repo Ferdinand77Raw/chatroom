@@ -23,6 +23,17 @@ export default function Chirp({ chirp }) {
         patch(route('chirps.update', chirp.id), { onSuccess: () => setEditing(false) });
     };
 
+    const eventSource = new EventSource('/event-stream');
+
+    eventSource.onmessage = function(event) {
+        const data = JSON.parse(event.data);
+        console.log('Mensaje recibido:', chirp.message, 'en', data.timestamp);
+    };
+
+    eventSource.onerror = function(error) {
+        console.error('Error en la conexión SSE:', error);
+    };
+
     return (
         <div className="p-6 flex space-x-2">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-600 -scale-x-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
