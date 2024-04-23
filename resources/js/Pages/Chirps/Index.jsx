@@ -5,7 +5,7 @@ import InputError from '@/Components/InputError';
 import PrimaryButton from '@/Components/PrimaryButton';
 import { useForm, Head } from '@inertiajs/react';
 
-export default function Index({ auth, chirps }) {
+export default function Index({ auth, chats }) {
     const { data, setData, post, processing, reset, errors } = useForm({
         message: '',
     });
@@ -32,8 +32,8 @@ export default function Index({ auth, chirps }) {
                 </form>
 
                 <div className="mt-6 bg-white shadow-sm rounded-lg divide-y">
-                    {chirps.map(chirp =>
-                        <Chirp key={chirp.id} chirp={chirp} />
+                    {chats.map(chat =>
+                        <Chirp key={chats.id} chirp={chat} />
                     )}
                 </div>
 

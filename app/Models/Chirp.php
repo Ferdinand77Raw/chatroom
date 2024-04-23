@@ -11,6 +11,8 @@ class Chirp extends Model
 {
     use HasFactory;
 
+    protected $table = 'chats';
+
     protected $fillable = [
         'message',
     ];
